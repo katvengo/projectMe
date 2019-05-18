@@ -214,8 +214,8 @@
                 description: $("#description").val().trim()
             };
             $.post("/events", newEvent,
-            function (data) {
- });
+                function (data) {});
+            alert('Event has posted successfully!')
         });
     </script>
 </body>

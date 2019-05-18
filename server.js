@@ -21,9 +21,9 @@ app.get("/events", function (req, res) {
     res.sendFile(path.join(__dirname, "public/events.html"));
 });
 
-// app.get("/events", function (req, res) {
-//     return res.json(newEvents);
-// });
+app.get("/api/events", function (req, res) {
+    return res.json(events);
+});
 
 
 // Create New Events - takes in JSON input
@@ -41,7 +41,7 @@ app.post("/events", function (req, res) {
     events.push(newEvent);
 
     res.json(newEvent);
-    alert('Event has posted successfully!')
+
 });
 
 // Starts the server to begin listening
