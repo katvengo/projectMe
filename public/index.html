@@ -213,7 +213,9 @@
                 private: $("#private").val().trim(),
                 description: $("#description").val().trim()
             };
-
+            $.post("/events", newEvent,
+            function (data) {
+ });
         });
     </script>
 </body>
