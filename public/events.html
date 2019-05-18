@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- <link rel="stylesheet"  type="text/css" href="/main.css"> -->
+    <style>
+        .fix-footer {
+            width: 100%;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        #centeredText {
+            text-align: center !important;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="public/events.html">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="public/events.html">
+                    Events
+                </a>
+
+
+            </div>
+        </div>
+        </div>
+        </div>
+    </nav>
+
+
+</head>
+
+<body>
+
+    <!-- Main Header -->
+    <section class="section">
+        <div class="container">
+
+            <h1 class="title">
+                San Diego Events
+            </h1>
+            <p class="subtitle">
+                The place to go to find the best local spots in your area!<br>
+                <a class="button is-large is-fullwidth">Click to search Events</a>
+            </p>
+        </div>
+
+    </section>
+    <!-- Text above form -->
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+            <p class="bd-notification is-primary">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate unde, tempora, ipsum, quam amet a
+                enim saepe deleniti ipsa molestias distinctio aut libero iure ex nam animi. Voluptatem, voluptates aut.
+            </p>
+        </div>
+    </div>
+    <main>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half">
+                <h4>Events near you</h4>
+            </div>
+        </div>
+        <!--form used to be here-->
+        <!--display form info-->
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half" id="centeredText">
+                <h4>Events here</h4>
+            </div>
+
+        </div>
+        </div>
+    </main>
+
+
+</body>
+<script type="text/javascript">
+    // In this code, jQuery is used to "download" the data from our server
+    // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
+    // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+
+    function runEventQuery() {
+        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+        $.ajax({
+                url: "/events",
+                method: "GET"
+            })
+            .then(function (data) {
+
+                // Here we then log the tableData to console, where it will show up as an object.
+                console.log(data);
+                console.log("------------------------------------");
+
+                // Loop through and display each of the customers
+                for (var i = 0; i < data.length; i++) {
+
+                    // Get a reference to the tableList element and populate it with tables
+                    var eventList = $("#eventList");
+
+                    // Then display the fields in the HTML (Section Name, Date, URL)
+                    var listItem = $("<li>");
+
+                    listItem.append(
+                        $("<h2>").text("Host Name" + (i + 1)),
+                        $("<hr>"),
+                        $("<h2>").text("Event Name: " + data[i].eventName),
+                        $("<h2>").text("Location: " + data[i].location),
+                        $("<h2>").text("Private: " + data[i].private),
+                        $("<h2>").text("Description: " + data[i].description)
+                    );
+
+                    eventList.append(listItem);
+                }
+            });
+    }
+    runEventQuery()
+</script>
+
+<footer class="footer fix-footer">
+    <div class="content has-text-centered">
+        <p>
+            <h6 class="subtitle is-6">Copyright Katvengo</h6>
+
+        </p>
+    </div>
+</footer>
+
+</html>

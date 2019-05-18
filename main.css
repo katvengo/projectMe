@@ -1,0 +1,13 @@
+.fix-footer {
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+#centeredText{
+    text-align: right !important;
+}
